@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   NINE TOWERS COLLECTION · THEME LAYER
+   Source: Nine Towers Collection Brand Guidelines (Digital / E-Commerce).
+   This is the ONLY place brand colours, fonts, radii and spacing are set.
+   tailwind.config.ts maps these variables to utility classes.
+   ========================================================================== */
+:root {
+  /* 01 Core palette — channels so Tailwind can apply alpha (bg-obsidian/40) */
+  --c-obsidian: 11 11 11;        /* #0B0B0B  Primary type / CTAs   */
+  --c-cream: 223 215 202;        /* #DFD7CA  Brand canvas          */
+  --c-ivory: 247 243 236;        /* #F7F3EC  Cards / sections      */
+  --c-champagne: 185 164 124;    /* #B9A47C  Accent / detail       */
+
+  /* Derived tones (tints of the core palette, contrast-checked) */
+  --c-stone: 87 81 74;           /* #57514A  secondary text: 5.5:1 on cream, 7.1:1 on ivory */
+  --c-champagne-deep: 125 106 69;/* #7D6A45  large emphasis type on ivory only (4.7:1) */
+  --c-mist: 163 156 145;         /* #A39C91  secondary text on obsidian (7.2:1) */
+  --c-cream-deep: 207 197 181;   /* #CFC5B5  image grounds, plate shading */
+  --c-error: 142 43 34;          /* #8E2B22  form errors only */
+
+  /* 02 Typography — families are injected by next/font in app/layout.tsx:
+     --font-display  Bodoni Moda (Bodoni / Didot-style serif)
+     --font-sans     Lato 2.0 (Regular, Medium, Bold) */
+
+  /* 03 Layout & spacing — 8-point rhythm */
+  --space-xs: 8px;
+  --space-s: 16px;
+  --space-m: 24px;
+  --space-l: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --space-3xl: 128px;
+  --space-4xl: 160px;
+  --content-max: 1320px;        /* desktop content 1200–1320px */
+  --gutter: 20px;               /* mobile side padding 20–24px */
+
+  /* Shape */
+  --radius-xs: 2px;
+  --radius-s: 4px;              /* buttons, inputs (04 UI components) */
+  --radius-m: 8px;              /* cards, panels */
+
+  /* Elevation: base → elevated → floating, tinted warm, low opacity */
+  --shadow-elevated: 0 1px 2px rgb(11 11 11 / 0.04), 0 8px 20px -12px rgb(74 60 36 / 0.18);
+  --shadow-floating: 0 2px 4px rgb(11 11 11 / 0.04), 0 24px 48px -20px rgb(74 60 36 / 0.32);
+
+  /* Motion — one shared curve */
+  --ease-brand: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Header (logo clearspace ≥ 0.5× logo height on every side) */
+  --announce-h: 36px;
+  --bar-h: 76px;                /* 38px logo + 19px + 19px */
+  --header-h: calc(var(--announce-h) + var(--bar-h));
+  --condense: 0px;              /* how much the bar shortens once scrolled */
+  --logo-condensed: 1;
+}
+
+@media (min-width: 390px) {
+  :root { --gutter: 24px; }
+}
+@media (min-width: 768px) {
+  /* 56px logo + 28px + 28px; condensed: 40px logo + 20px + 20px = 80px */
+  :root { --gutter: 40px; --bar-h: 112px; --condense: 32px; --logo-condensed: 0.7143; }
+}
+@media (min-width: 1280px) {
+  :root { --gutter: 64px; }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  body {
+    @apply bg-ivory font-sans text-body text-obsidian antialiased;
+    overflow-x: clip;
+    font-feature-settings: 'kern', 'liga';
+  }
+  ::selection { @apply bg-obsidian text-ivory; }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-obsidian));
+    outline-offset: 3px;
+  }
+  .on-dark :focus-visible { outline-color: rgb(var(--c-ivory)); }
+
+  button, a, [role='button'], summary, label[for], select { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+  input, select, textarea { font-size: 16px; } /* prevents iOS focus zoom */
+
+  img { max-width: 100%; }
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full px-gutter;
+    max-width: calc(var(--content-max) + 2 * var(--gutter));
+  }
+
+  /* Small uppercase sans with tracking (badges, labels, nav) */
+  .label { @apply font-sans text-label font-medium uppercase; }
+
+  .price { @apply font-sans text-price font-medium; font-variant-numeric: tabular-nums lining-nums; }
+
+  /* Buttons — Primary = Obsidian fill. Secondary = Cream / outline. */
+  .btn {
+    @apply relative isolate inline-flex min-h-[52px] select-none items-center justify-center gap-xs overflow-hidden rounded-s px-l text-center font-sans text-label font-medium uppercase;
+    transition: transform 320ms var(--ease-brand);
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn[disabled], .btn[aria-disabled='true'] { @apply cursor-not-allowed opacity-50; }
+  .btn-primary { @apply bg-obsidian text-ivory; }
+  .btn-secondary { @apply bg-cream text-obsidian; }
+  .btn-outline { @apply bg-transparent text-obsidian ring-1 ring-inset ring-obsidian; }
+  .btn-ghost-light { @apply bg-transparent text-ivory ring-1 ring-inset ring-ivory/70; }
+
+  /* Rising fill (the tower motif): transform-only hover */
+  .btn-fill {
+    @apply pointer-events-none absolute inset-0 -z-10 origin-bottom scale-y-0;
+    transition: transform 600ms var(--ease-brand);
+  }
+  .btn-primary .btn-fill { @apply bg-ivory/15; }
+  .btn-secondary .btn-fill, .btn-outline .btn-fill { @apply bg-obsidian; }
+  .btn-ghost-light .btn-fill { @apply bg-ivory; }
+
+  .btn-roll { @apply relative block overflow-hidden; }
+  .btn-roll > span { @apply flex items-center justify-center gap-xs; transition: transform 600ms var(--ease-brand); }
+  .btn-roll > span + span { @apply absolute inset-x-0 top-full; }
+  .btn-secondary .btn-roll > span + span,
+  .btn-outline .btn-roll > span + span { @apply text-ivory; }
+  .btn-ghost-light .btn-roll > span + span { @apply text-obsidian; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn:hover .btn-fill { transform: scaleY(1); }
+    .btn:hover .btn-roll > span { transform: translateY(-100%); }
+  }
+  .btn:focus-visible .btn-fill { transform: scaleY(1); }
+  .btn:focus-visible .btn-roll > span { transform: translateY(-100%); }
+
+  /* Text link with drawn underline */
+  .link-u { @apply relative inline-flex items-center gap-xs; }
+  .link-u::after {
+    content: '';
+    @apply pointer-events-none absolute inset-x-0 -bottom-[3px] h-px origin-right scale-x-0 bg-current;
+    transition: transform 600ms var(--ease-brand);
+  }
+  .link-u.is-underlined::after { transform: scaleX(1); transform-origin: left; }
+  /* Standalone label links get a 44px touch area without moving the underline */
+  .link-u.label::before { content: ''; @apply absolute -inset-x-xs -inset-y-s; }
+  @media (hover: hover) and (pointer: fine) {
+    .link-u:hover::after { transform: scaleX(1); transform-origin: left; }
+    .link-u.is-underlined:hover::after { transform: scaleX(0); transform-origin: right; }
+  }
+  .link-u:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Long-form text pages */
+  .prose-ntc { @apply text-body text-obsidian; }
+  .prose-ntc h2 { @apply mt-xl font-display text-d-s first:mt-0; }
+  .prose-ntc > h3 { @apply label mt-l; }
+  .prose-ntc p, .prose-ntc ul, .prose-ntc ol { @apply mt-s text-stone; }
+  .prose-ntc ul { @apply list-disc pl-m marker:text-champagne; }
+  .prose-ntc li + li { @apply mt-xs; }
+  .prose-ntc a { @apply text-obsidian underline decoration-obsidian/30 underline-offset-4 hover:decoration-obsidian; }
+  .prose-ntc strong { @apply font-medium text-obsidian; }
+
+  /* Hairline */
+  .rule { @apply h-px w-full bg-obsidian/15; }
+
+  /* Form fields */
+  .field-label { @apply label mb-xs block text-obsidian; }
+  .field {
+    @apply block min-h-[48px] w-full min-w-0 rounded-s border border-obsidian/25 bg-ivory px-s py-[12px] text-body text-obsidian placeholder:text-stone;
+    transition: border-color 320ms var(--ease-brand);
+  }
+  .field:hover { @apply border-obsidian/50; }
+  .field:focus-visible { @apply border-obsidian; outline-offset: 1px; }
+  .field[aria-invalid='true'] { @apply border-error; }
+  .field-error { @apply mt-xs text-body-s text-error; }
+
+  /* Grain: a single fixed, non-scrolling layer */
+  /* No blend mode: a blended full-screen layer forces the whole page to be
+     re-composited every animation frame. Plain low-opacity noise instead. */
+  .grain {
+    @apply pointer-events-none fixed inset-0 z-raised;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.25 0 0 0 0 0.18 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .tabular { font-variant-numeric: tabular-nums lining-nums; }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .display-italic { font-style: italic; font-variation-settings: 'opsz' 96; }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+}
+
+/* ==========================================================================
+   Header states (transform-only)
+   ========================================================================== */
+.site-header { transition: transform 700ms var(--ease-brand); }
+.site-header[data-condensed='true'] { transform: translate3d(0, calc(-1 * (var(--announce-h) + var(--condense))), 0); }
+.site-header[data-hidden='true'] { transform: translate3d(0, -100%, 0); }
+.site-header .header-inner, .site-header .header-logo { transition: transform 700ms var(--ease-brand); }
+.site-header[data-condensed='true'] .header-inner { transform: translate3d(0, calc(var(--condense) / 2), 0); }
+.site-header[data-condensed='true'] .header-logo { transform: scale(var(--logo-condensed)); }
+.header-surface { transition: opacity 600ms var(--ease-brand); }
+.mega-panel { margin-top: 0; }
+.site-header[data-condensed='true'] .mega-panel { margin-top: calc(var(--condense) / -2); }
+
+/* ==========================================================================
+   Hero intro (CSS so it can never strand the headline invisible)
+   html.js is set by an inline script before first paint.
+   html.ntc-preload means the preloader is running (first visit this session).
+   ========================================================================== */
+@keyframes ntc-rise { from { transform: translate3d(0, 108%, 0); } to { transform: translate3d(0, 0, 0); } }
+@keyframes ntc-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ntc-settle { from { transform: scale(1.1); } to { transform: scale(1); } }
+@keyframes ntc-tower { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+@media (pointer: coarse) { .grain { display: none; } }
+
+.js .intro-line > span { animation: ntc-rise 1.1s var(--ease-brand) both; animation-delay: calc(var(--intro-delay, 0s) + var(--i, 0) * 110ms); }
+.js .intro-fade { animation: ntc-fade 1s var(--ease-brand) both; animation-delay: calc(var(--intro-delay, 0s) + var(--d, 0.5s)); }
+.js .intro-settle { animation: ntc-settle 2.2s var(--ease-brand) both; animation-delay: var(--intro-delay, 0s); }
+.js .intro-tower { transform-origin: 50% 100%; animation: ntc-tower 1.4s var(--ease-brand) both; animation-delay: calc(var(--intro-delay, 0s) + var(--i, 0) * 90ms); }
+.ntc-preload { --intro-delay: 2.15s; }
+.intro-line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.intro-line > span { display: block; }
+
+/* Preloader: hidden instantly for repeat visits; auto-clears after 4s if JS fails */
+@keyframes ntc-draw { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+.preloader-mark { animation: ntc-draw 1.5s var(--ease-brand) 0.1s both; }
+@keyframes ntc-preloader-failsafe { to { opacity: 0; visibility: hidden; } }
+.preloader-shell { animation: ntc-preloader-failsafe 0.4s linear 4s forwards; }
+html:not(.ntc-preload) .preloader-shell { display: none; }
+
+@keyframes ntc-pop { 0% { transform: scale(0.6); } 55% { transform: scale(1.18); } 100% { transform: scale(1); } }
+.heart-pop { animation: ntc-pop 550ms var(--ease-brand) both; }
+
+/* Scroll cue: a short line travelling down the spire */
+@keyframes ntc-cue { 0% { transform: translate3d(0, -100%, 0); } 60%, 100% { transform: translate3d(0, 200%, 0); } }
+.scroll-cue { animation: ntc-cue 2.4s var(--ease-brand) infinite; }
+
+/* Marquee */
+@keyframes ntc-marquee { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+.marquee-track { animation: ntc-marquee var(--marquee-duration, 40s) linear infinite; }
+.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+
+/* ==========================================================================
+   Reduced motion: keep simple fades, never strand content
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track { animation: none !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .preloader-shell { display: none !important; }
+}

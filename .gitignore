@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+.env
+.env.local
+*.log
+.vercel
+next-env.d.ts
+*.tsbuildinfo
+temporary screenshots
+
+# Client source files (cost prices and margins), not for the repo
+*.xlsx
+~$*

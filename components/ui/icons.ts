@@ -1,0 +1,38 @@
+/**
+ * One icon family (Phosphor, light weight) to match the hairline drawings in
+ * the logo. The SSR build works in both server and client components.
+ */
+export {
+  MagnifyingGlass,
+  Heart,
+  Handbag,
+  X,
+  Plus,
+  Minus,
+  ArrowRight,
+  ArrowLeft,
+  ArrowUpRight,
+  CaretDown,
+  CaretLeft,
+  CaretRight,
+  List,
+  WhatsappLogo,
+  InstagramLogo,
+  FacebookLogo,
+  TiktokLogo,
+  Truck,
+  Gift,
+  LockSimple,
+  ChatCircleText,
+  Check,
+  SlidersHorizontal,
+  SquaresFour,
+  Square,
+  Rows,
+  Trash,
+  EnvelopeSimple,
+  MapPin,
+  ArrowsOut,
+  MagnifyingGlassPlus,
+  MagnifyingGlassMinus,
+} from '@phosphor-icons/react/dist/ssr';
