@@ -65,9 +65,9 @@ admin's first save. Key points:
   one item number are one product with colour options (e.g. 8105 ×6, 52930 ×4).
 - 1735MR (2-pc, $698) and 1735RS (3-pc, $1,250) are separate products because
   their prices differ; they share the one catalogue photo.
-- **8 items have no photo yet** and show the category plate: 7929 and 4324-95
-  earrings, two 5000 bracelets (pink heart, framed flower), Awei charger, WIWU
-  power bank, LK W9 dash cam, Jortan JT-8292. Add photos in the admin.
+- Every product has a photo. The last 8 (7929 and 4324-95 earrings, the two
+  5000 bracelets, Awei charger, WIWU power bank, LK dash cam, Jortan JT-8292)
+  were supplied 2026-10-20 and fitted to 4:5 on their own white ground.
 - **`itemNo`** is the sheet's product code (shown on the product page, searchable,
   in every WhatsApp order line). The pearl necklace is listed as **4306** in the
   sheet although its photo card reads 4324-95; the sheet's 4324-95 is a silver
@@ -119,7 +119,8 @@ From the Nine Towers Brand Guidelines. Change them in ONE place:
 variables to class names; nothing else hard-codes a colour.
 - Obsidian `#0B0B0B` (type, CTAs), Warm Cream `#DFD7CA` (brand canvas),
   Soft Ivory `#F7F3EC` (cards/sections), Champagne `#B9A47C` (accent only)
-- Display font: Bodoni Moda (set in `app/layout.tsx`). Utility font: Lato 2.0,
+- Display font: Libre Bodoni (set in `app/layout.tsx`; swapped from Bodoni Moda
+  2026-10-20 because its hairlines were hard to read). Utility font: Lato 2.0,
   self-hosted in `app/fonts/` so prices can use true Lato Medium.
 - Spacing: 8 / 16 / 24 / 40 / 64px (`xs s m l xl`) plus 96 / 128 / 160 for sections.
 - `config/theme.ts` repeats the hex values for places CSS can't reach (social share

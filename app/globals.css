@@ -23,7 +23,7 @@
   --c-error: 142 43 34;          /* #8E2B22  form errors only */
 
   /* 02 Typography — families are injected by next/font in app/layout.tsx:
-     --font-display  Bodoni Moda (Bodoni / Didot-style serif)
+     --font-display  Libre Bodoni (Bodoni-style serif, sturdy hairlines)
      --font-sans     Lato 2.0 (Regular, Medium, Bold) */
 
   /* 03 Layout & spacing — 8-point rhythm */
@@ -210,7 +210,7 @@ html.lenis, html.lenis body { height: auto; }
   .tabular { font-variant-numeric: tabular-nums lining-nums; }
   .no-scrollbar { scrollbar-width: none; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
-  .display-italic { font-style: italic; font-variation-settings: 'opsz' 96; }
+  .display-italic { font-style: italic; }
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
 }
 
@@ -244,7 +244,8 @@ html.lenis, html.lenis body { height: auto; }
 .js .intro-settle { animation: ntc-settle 2.2s var(--ease-brand) both; animation-delay: var(--intro-delay, 0s); }
 .js .intro-tower { transform-origin: 50% 100%; animation: ntc-tower 1.4s var(--ease-brand) both; animation-delay: calc(var(--intro-delay, 0s) + var(--i, 0) * 90ms); }
 .ntc-preload { --intro-delay: 2.15s; }
-.intro-line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+/* 0.22em of room below the baseline so Libre Bodoni's descenders (g, y, p) clear the mask */
+.intro-line { display: block; overflow: hidden; padding-bottom: 0.22em; margin-bottom: -0.22em; }
 .intro-line > span { display: block; }
 
 /* Preloader: hidden instantly for repeat visits; auto-clears after 4s if JS fails */

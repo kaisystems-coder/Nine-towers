@@ -1258,7 +1258,9 @@ export const products: Product[] = [
       "Colour: Silver",
       "Detail: Gem hoop"
     ],
-    "images": [],
+    "images": [
+      "/products/silver-gem-hoop-earrings-7929/1.jpg"
+    ],
     "tags": [],
     "collections": [
       "gifts-under-500"
@@ -1281,7 +1283,9 @@ export const products: Product[] = [
       "Colour: Silver",
       "Detail: White hoop"
     ],
-    "images": [],
+    "images": [
+      "/products/silver-white-hoop-earrings-4324-95/1.jpg"
+    ],
     "tags": [],
     "collections": [
       "gifts-under-500"
@@ -1304,7 +1308,9 @@ export const products: Product[] = [
       "Colour: Silver",
       "Detail: Pink and silver heart"
     ],
-    "images": [],
+    "images": [
+      "/products/pink-heart-charm-bracelet-5000/1.jpg"
+    ],
     "tags": [],
     "collections": [
       "gifts-under-500"
@@ -1327,7 +1333,9 @@ export const products: Product[] = [
       "Colour: Silver",
       "Detail: Flower in picture frame"
     ],
-    "images": [],
+    "images": [
+      "/products/framed-flower-charm-bracelet-5000/1.jpg"
+    ],
     "tags": [],
     "collections": [
       "gifts-under-500"
@@ -2007,7 +2015,9 @@ export const products: Product[] = [
       "Dual output",
       "22.5W fast charging"
     ],
-    "images": [],
+    "images": [
+      "/products/awei-22-5w-dual-output-fast-charger-kit/1.jpg"
+    ],
     "tags": [],
     "collections": [
       "the-travel-edit"
@@ -2030,7 +2040,9 @@ export const products: Product[] = [
       "Colour: Black/White",
       "10,000 mAh"
     ],
-    "images": [],
+    "images": [
+      "/products/essen-wiwu-10-000-mah-power-bank/1.jpg"
+    ],
     "tags": [],
     "collections": [
       "the-travel-edit"
@@ -2053,7 +2065,9 @@ export const products: Product[] = [
       "5 channel",
       "WiFi"
     ],
-    "images": [],
+    "images": [
+      "/products/lk-w9-5-channel-wifi-dash-cam/1.jpg"
+    ],
     "tags": [],
     "collections": [],
     "inStock": true,
@@ -2077,7 +2091,9 @@ export const products: Product[] = [
       "Gun ball linkage",
       "WiFi IP security camera"
     ],
-    "images": [],
+    "images": [
+      "/products/jortan-gun-ball-linkage-wifi-ip-camera-jt-8292/1.jpg"
+    ],
     "tags": [],
     "collections": [],
     "inStock": true,

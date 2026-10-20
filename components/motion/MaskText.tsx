@@ -34,7 +34,7 @@ export function MaskText({
       {lines.map((line, i) => {
         const l = typeof line === 'string' ? { text: line } : line;
         return (
-          <span key={i} className={cn('block overflow-hidden pb-[0.1em] -mb-[0.1em]', lineClassName)}>
+          <span key={i} className={cn('block overflow-hidden pb-[0.22em] -mb-[0.22em]', lineClassName)}>
             <motion.span
               data-reveal=""
               className={cn('block', l.italic && 'display-italic')}

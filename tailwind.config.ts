@@ -34,7 +34,7 @@ const config: Config = {
         error: rgb('--c-error'),
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Didot', 'Georgia', 'serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
         sans: ['var(--font-sans)', 'Lato', '"Helvetica Neue"', 'Arial', 'sans-serif'],
       },
       fontSize: {

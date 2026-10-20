@@ -55,8 +55,10 @@ export function CustomCursor() {
       animate={{ opacity: visible ? 1 : 0 }}
       transition={{ duration: 0.3 }}
     >
+      {/* `relative` anchors the fills: once the scale settles Framer writes transform: none,
+          which stops this box being their containing block */}
       <motion.div
-        className="-ml-10 -mt-10 flex h-20 w-20 items-center justify-center rounded-full"
+        className="relative -ml-10 -mt-10 flex h-20 w-20 items-center justify-center rounded-full"
         initial={false}
         animate={{ scale: label ? 1 : 0.1 }}
         transition={{ duration: 0.5, ease: EASE }}
