@@ -30,7 +30,7 @@ export default function TermsPage() {
       </p>
       <h2>Contact</h2>
       <p>
-        {site.name}, {site.country}. WhatsApp {site.whatsappDisplay} or email {site.email}.
+        {site.name}, {site.country}. WhatsApp {site.whatsappDisplay}.
       </p>
     </TextPage>
   );

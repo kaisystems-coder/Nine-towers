@@ -37,7 +37,7 @@ export function NewsletterForm({
     }
     setStatus('sending');
     const res = await submitWeb3Form({
-      subject: 'New newsletter sign-up (10% welcome offer)',
+      subject: 'New newsletter sign-up',
       email: email.trim(),
       source,
     });
@@ -48,7 +48,7 @@ export function NewsletterForm({
       setStatus('error');
       setError(
         res.reason === 'not-configured'
-          ? 'Sign-up isn’t connected yet. Message us on WhatsApp for your welcome offer.'
+          ? 'Sign-up isn’t connected yet. Message us on WhatsApp to hear about new arrivals.'
           : 'That didn’t go through. Check your connection and try again.'
       );
     }
@@ -67,7 +67,7 @@ export function NewsletterForm({
             transition={{ duration: 0.5, ease: EASE }}
           >
             <Check size={20} weight="light" className="mt-[3px] shrink-0 text-champagne" aria-hidden="true" />
-            You’re on the list. We’ll email your 10% welcome code within a day.
+            You’re on the list. We’ll email you when new pieces arrive.
           </motion.p>
         ) : (
           <motion.form

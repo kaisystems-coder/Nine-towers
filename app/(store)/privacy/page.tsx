@@ -27,7 +27,7 @@ export default function PrivacyPage() {
         Only the services that make this possible: WhatsApp for orders, Web3Forms for website forms, and our delivery partners for your address. We do not sell or rent your information.
       </p>
       <h2>Your choices</h2>
-      <p>Ask us to see, correct or delete your details at any time by emailing {site.email} or messaging us on WhatsApp.</p>
+      <p>Ask us to see, correct or delete your details at any time by messaging us on WhatsApp at {site.whatsappDisplay}.</p>
     </TextPage>
   );
 }

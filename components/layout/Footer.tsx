@@ -16,7 +16,7 @@ export function Footer() {
             Join the list<span className="text-champagne">.</span>
           </h2>
           <p className="mt-s max-w-[42ch] text-body text-mist">
-            New arrivals and private previews, first. Plus {site.newsletterOffer}.
+            New arrivals and private previews, first.
           </p>
         </div>
         <div className="md:col-span-6 md:col-start-7 lg:col-span-5 lg:col-start-8 md:self-end">
@@ -81,9 +81,6 @@ export function Footer() {
               </li>
             ))}
           </ul>
-          <a href={`mailto:${site.email}`} className="link-u mt-xs text-body-s text-ivory/90">
-            {site.email}
-          </a>
         </div>
       </div>
 

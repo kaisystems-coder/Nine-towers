@@ -14,10 +14,9 @@ export const site = {
   country: 'Trinidad & Tobago',
 
   /** WhatsApp number in international format, digits only (1 868 + 7 digits). */
-  whatsappNumber: '18680000000', // TODO: replace with the store's WhatsApp number
-  whatsappDisplay: '+1 (868) 000-0000', // TODO: match the number above
+  whatsappNumber: '18682595393',
+  whatsappDisplay: '+1 (868) 259-5393',
 
-  email: 'hello@ninetowerscollection.com', // TODO: confirm email
   currency: 'TTD',
 
   /** Orders at or above this subtotal (TTD) ship free. */
@@ -34,7 +33,6 @@ export const site = {
     'Islandwide delivery across Trinidad & Tobago',
     'Order via WhatsApp, payment arranged in chat',
     'New arrivals weekly',
-    'Complimentary gift wrapping on request',
   ],
 
   /** Delivery areas offered at checkout. */
@@ -58,9 +56,6 @@ export const site = {
 
   /** Shown on the checkout form when the customer chooses pickup. */
   pickupNote: 'We’ll share the pickup point and a time on WhatsApp.',
-
-  newsletterOffer: '10% off your first order',
-  newsletterPopupDelayMs: 20000,
 
   popularSearches: ['Butterfly', 'Pearl', 'Heart', 'Charm bracelet', 'Luggage set', 'Camera'],
 } as const;

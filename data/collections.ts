@@ -33,8 +33,8 @@ export const collections: Collection[] = [
   {
     slug: 'gifts-under-500',
     title: 'Gifts Under $500',
-    kicker: 'Thoughtful, wrapped',
-    intro: 'Considered gifts under TT$500, each one ready for complimentary gift wrapping.',
+    kicker: 'Thoughtful, under $500',
+    intro: 'Jewellery and handbags under TT$500, chosen to give.',
     image: '/media/collection-gifts.jpg',
     plateIcon: 'jewellery',
   },

@@ -57,7 +57,6 @@ const groups: { title: string; items: { q: string; a: string }[] }[] = [
         a: 'Most of our jewellery is stainless steel, which stands up well to everyday wear. Keep pieces away from perfume, lotion and water, and store them separately.',
       },
       { q: 'How do I clean my luggage?', a: 'Wipe the shell with a damp cloth and mild soap. Clean the wheels after each trip so they keep turning quietly.' },
-      { q: 'Do you offer gift wrapping?', a: 'Yes, complimentary on request. Add a gift message in your bag before you check out.' },
     ],
   },
 ];

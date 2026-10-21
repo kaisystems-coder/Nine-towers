@@ -84,7 +84,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             name: site.name,
             url: site.url,
             logo: `${site.url}/brand/logo.svg`,
-            email: site.email,
             areaServed: 'TT',
             sameAs: [site.socials.instagram, site.socials.facebook, site.socials.tiktok],
             contactPoint: {

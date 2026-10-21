@@ -3,13 +3,13 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { MaskText } from '@/components/motion/MaskText';
 import { Reveal } from '@/components/motion/Reveal';
 import { ContactForm } from '@/components/forms/ContactForm';
-import { EnvelopeSimple, InstagramLogo, WhatsappLogo } from '@/components/ui/icons';
+import { InstagramLogo, WhatsappLogo } from '@/components/ui/icons';
 import { site } from '@/config/site';
 import { buildGeneralMessage, whatsappUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Message Nine Towers Collection on WhatsApp, Instagram or email. Based in Trinidad & Tobago.',
+  description: 'Message Nine Towers Collection on WhatsApp or Instagram. Based in Trinidad & Tobago.',
   alternates: { canonical: '/contact' },
 };
 
@@ -17,7 +17,6 @@ export default function ContactPage() {
   const channels = [
     { Icon: WhatsappLogo, label: 'WhatsApp', value: site.whatsappDisplay, href: whatsappUrl(buildGeneralMessage()), note: 'Fastest. Orders, stock and delivery.' },
     { Icon: InstagramLogo, label: 'Instagram', value: site.socials.instagramHandle, href: site.socials.instagram, note: 'New arrivals and styling.' },
-    { Icon: EnvelopeSimple, label: 'Email', value: site.email, href: `mailto:${site.email}`, note: 'For anything longer.' },
   ];
   return (
     <div className="bg-ivory">
@@ -37,7 +36,7 @@ export default function ContactPage() {
         <ul className="flex flex-col md:col-span-4">
           {channels.map(({ Icon, label, value, href, note }) => (
             <li key={label} className="border-b border-obsidian/15 first:border-t">
-              <a href={href} target={href.startsWith('mailto') ? undefined : '_blank'} rel="noopener noreferrer" className="group flex items-start gap-s py-m">
+              <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-start gap-s py-m">
                 <Icon size={24} weight="light" aria-hidden="true" className="mt-[2px] shrink-0" />
                 <span className="min-w-0">
                   <span className="label block">{label}</span>

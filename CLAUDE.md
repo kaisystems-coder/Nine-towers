@@ -16,13 +16,13 @@ managed in the **admin at `/admin`**; everything else lives in a handful of plai
   `node scripts/scan-assets.mjs; node node_modules\next\dist\bin\next build`
 - Never commit or push unless asked. Vercel deploys automatically from GitHub.
 
-## Change the WhatsApp number, delivery threshold, email or socials
+## Change the WhatsApp number, delivery threshold or socials
 
 All in **`config/site.ts`**:
-- `whatsappNumber`: digits only, with country code, e.g. `18687124590`
-- `whatsappDisplay`: how the number is shown, e.g. `+1 (868) 712-4590`
+- `whatsappNumber`: digits only, with country code. Live number: `18682595393`
+- `whatsappDisplay`: how the number is shown: `+1 (868) 259-5393`
 - `freeDeliveryThreshold`: in TTD (drives the progress bar and copy everywhere)
-- `email`, `socials`, `announcements` (the scrolling top bar), `deliveryAreas`
+- `socials`, `announcements` (the scrolling top bar), `deliveryAreas`
   (checkout dropdown), `pickupNote`, `popularSearches`
 
 ## Admin: add, edit or remove products, prices and stock
@@ -131,7 +131,7 @@ variables to class names; nothing else hard-codes a colour.
 
 ## Forms
 
-Newsletter, welcome popup and contact form post to Web3Forms. Put the access key in
+Newsletter sign-up and contact form post to Web3Forms. Put the access key in
 `.env.local` as `NEXT_PUBLIC_WEB3FORMS_KEY=...` (and in Vercel's environment
 variables). Without it, the forms tell visitors to use WhatsApp instead.
 
@@ -203,3 +203,9 @@ variables). Without it, the forms tell visitors to use WhatsApp instead.
 - All website changes are tested on localhost first. **Never commit or push to GitHub unless the user explicitly says to.**
 - The deployment pipeline is: local dev → GitHub commit/push (on user's instruction) → Vercel auto-deploys from GitHub.
 - Do not run `git commit`, `git push`, or any GitHub-related command during a normal editing session. Wait for explicit instruction.
+
+## Removed on purpose (2026-10-21, client request)
+
+No store email is shown anywhere, there is no gift wrapping offer and no
+"10% off your first order" welcome popup. Don't add these back without the
+client asking.
