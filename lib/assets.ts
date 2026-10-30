@@ -5,11 +5,10 @@ const available = new Set<string>(manifest.files);
 
 /**
  * True when the photo exists: listed by scripts/scan-assets.mjs, uploaded
- * through the admin (/uploads/… locally, a Vercel Blob https URL in
- * production), or any other absolute URL.
+ * through the admin (a Supabase Storage https URL), or any other absolute URL.
  */
 export function hasAsset(src?: string | null): src is string {
-  return !!src && (src.startsWith('http') || src.startsWith('/uploads/') || available.has(src));
+  return !!src && (src.startsWith('http') || available.has(src));
 }
 
 const blurSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="8" height="10"><rect width="8" height="10" fill="${brand.cream}"/></svg>`;

@@ -33,24 +33,21 @@ collections, colours/sizes with their own stock counts, upload and reorder photo
 change stock straight from the product list, and delete products. Saves go live
 immediately; anything at 0 stock shows as sold out, and 3 or fewer shows "Only N left".
 
-Set-up:
-- **Password:** `ADMIN_PASSWORD` in `.env.local` (a random one was generated for local
-  use) and in Vercel → Settings → Environment Variables. Optionally set
-  `ADMIN_SESSION_SECRET` to a long random string. Sessions last 12 hours; five
-  wrong passwords lock that address out for 10 minutes.
-- **Where saves go:**
-  - Locally: `data/products.json` and photos in `data/uploads/`. Commit both to
-    publish local edits.
-  - On Vercel: connect a **Blob** store (Vercel → Storage → Create → Blob → connect
-    to this project). That adds `BLOB_READ_WRITE_TOKEN`, and the admin then saves
-    the catalogue and photos there. Each save keeps a dated copy (last 20) as backups.
-    Without Blob, the live admin can sign in but can't save.
-- Until the first save, the store shows the starter catalogue in `data/products.ts`.
-- If you edit `data/products.json` by hand, restart the server so the store picks it up
-  (admin saves refresh everything automatically).
+Set-up (details in **`supabase/README.md`**):
+- **Database:** products and stock live in Supabase, as the `nine-towers-collection`
+  tenant on the shared project. Local and live use the same data, so an edit made
+  locally is live too. No Vercel environment variables are needed.
+- **Password:** the admin signs in to the owner's Supabase account
+  (`owner@ninetowerscollection.com`); the form asks for the password only. Change it
+  in the Supabase dashboard (Authentication → Users). Five wrong passwords lock
+  that address out for 10 minutes.
+- **Photos:** uploads go to the `product-photos` bucket under the tenant's folder.
+- If Supabase can't be reached, the store shows the starter catalogue in
+  `data/products.ts` so it never goes blank (the admin needs Supabase to work).
 
 The admin code: `app/admin/` (pages and server actions), `components/admin/`,
-`lib/products-store.ts` (storage), `lib/auth.ts` + `middleware.ts` (sign-in),
+`lib/products-store.ts` (storage), `lib/supabase/` (connection and row mapping),
+`lib/auth.ts` + `lib/admin-session.ts` + `middleware.ts` (sign-in),
 `lib/admin-schema.ts` (validation).
 
 ## Product data reference

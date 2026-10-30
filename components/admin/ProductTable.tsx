@@ -88,7 +88,7 @@ function StockEditor({ p, onSaved, notify }: { p: Product; onSaved: () => void; 
   );
 }
 
-export function ProductTable({ products, updatedAt, source }: { products: Product[]; updatedAt: string; source: 'blob' | 'file' | 'seed' }) {
+export function ProductTable({ products, updatedAt }: { products: Product[]; updatedAt: string }) {
   const router = useRouter();
   const [q, setQ] = useState('');
   const [cat, setCat] = useState<Category | 'all'>('all');
@@ -159,12 +159,6 @@ export function ProductTable({ products, updatedAt, source }: { products: Produc
           </span>
         </Link>
       </div>
-
-      {source === 'seed' && (
-        <p className="mt-m rounded-s border border-obsidian/15 bg-cream/50 p-s text-body-s">
-          You’re seeing the starter catalogue. Your first save stores the full list so it can be edited from here.
-        </p>
-      )}
 
       {/* Filters */}
       <div className="mt-l flex flex-col gap-s lg:flex-row lg:items-center lg:justify-between">

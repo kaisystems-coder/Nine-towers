@@ -2,11 +2,9 @@ import Link from 'next/link';
 import { Logo } from '@/components/ui/Logo';
 import { ArrowUpRight } from '@/components/ui/icons';
 import { logout } from '@/app/admin/actions';
-import { storageMode } from '@/lib/products-store';
 
 /** Top bar for every signed-in admin page. */
 export function AdminBar() {
-  const mode = storageMode();
   return (
     <header className="sticky top-0 z-header border-b border-obsidian/10 bg-ivory/95 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between gap-s">
@@ -17,9 +15,9 @@ export function AdminBar() {
           <span className="label hidden text-stone sm:inline">Store admin</span>
           <span
             className="hidden rounded-full border border-obsidian/15 px-s py-[4px] text-caption text-stone md:inline"
-            title={mode === 'blob' ? 'Changes save to Vercel Blob and go live immediately.' : 'Changes save to data/products.json on this computer.'}
+            title="Changes save to the store database and go live immediately."
           >
-            Saving to {mode === 'blob' ? 'Vercel Blob' : 'this computer'}
+            Changes go live on save
           </span>
         </div>
         <nav aria-label="Admin" className="flex items-center gap-xs">
