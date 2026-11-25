@@ -202,7 +202,7 @@ export function CheckoutForm() {
         </>
       )}
 
-      <Field id="note" label="Note or gift message" optional error={errors.note?.message}>
+      <Field id="note" label="Delivery note" optional error={errors.note?.message}>
         <textarea id="note" rows={2} className="field resize-none" aria-describedby={describedBy('note')} {...register('note')} />
       </Field>
 

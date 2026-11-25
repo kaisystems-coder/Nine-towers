@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const principles = [
   { title: 'Chosen, not stocked', text: 'We bring in fewer pieces and choose each one ourselves. If we wouldn’t wear it or carry it, it doesn’t make the shelf.' },
   { title: 'Made to last a season, and the next', text: 'Stainless steel jewellery, luggage with lock security, bags with solid hardware. Details that keep a piece looking new.' },
-  { title: 'A person on the other end', text: 'Every order is confirmed by us on WhatsApp. Ask about a colour, a size or a gift message and you’ll get a real answer.' },
+  { title: 'A person on the other end', text: 'Every order is confirmed by us on WhatsApp. Ask about a colour, a size or delivery and you’ll get a real answer.' },
 ];
 
 export default function AboutPage() {

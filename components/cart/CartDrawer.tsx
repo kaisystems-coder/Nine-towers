@@ -119,8 +119,6 @@ export function CartDrawer() {
   const setCartView = useUI((s) => s.setCartView);
   const hydrated = useUI((s) => s.hydrated);
   const items = useCart((s) => s.items);
-  const note = useCart((s) => s.note);
-  const setNote = useCart((s) => s.setNote);
 
   const catalog = useCatalog();
   const lines = resolveLines(items, catalog.getProductById);
@@ -194,20 +192,6 @@ export function CartDrawer() {
                     ))}
                   </AnimatePresence>
                 </ul>
-                <div className="py-m">
-                  <label htmlFor="bag-note" className="field-label">
-                    Gift message or note <span className="normal-case tracking-normal text-stone">(optional)</span>
-                  </label>
-                  <textarea
-                    id="bag-note"
-                    rows={2}
-                    maxLength={500}
-                    value={note}
-                    onChange={(e) => setNote(e.target.value)}
-                    placeholder="Add a message for the card, or delivery notes"
-                    className="field resize-none"
-                  />
-                </div>
               </div>
               <div className="safe-bottom shrink-0 border-t border-obsidian/10 bg-ivory px-m pb-m pt-s">
                 <div className="flex items-baseline justify-between">

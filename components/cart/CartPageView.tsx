@@ -15,8 +15,6 @@ export function CartPageView() {
   const hydrated = useUI((s) => s.hydrated);
   const openCart = useUI((s) => s.openCart);
   const items = useCart((s) => s.items);
-  const note = useCart((s) => s.note);
-  const setNote = useCart((s) => s.setNote);
   const catalog = useCatalog();
   const lines = resolveLines(items, catalog.getProductById);
   const total = subtotal(lines);
@@ -74,12 +72,6 @@ export function CartPageView() {
               <dd className="price text-body-l">{subtotalLabel(total, unpriced)}</dd>
             </div>
           </dl>
-          <div className="mt-m">
-            <label htmlFor="page-note" className="field-label">
-              Gift message or note <span className="normal-case tracking-normal text-stone">(optional)</span>
-            </label>
-            <textarea id="page-note" rows={3} maxLength={500} value={note} onChange={(e) => setNote(e.target.value)} className="field resize-none" />
-          </div>
           <button type="button" onClick={() => openCart('checkout')} className="btn btn-primary mt-m w-full">
             <span className="btn-fill" aria-hidden="true" />
             <span className="btn-roll">
